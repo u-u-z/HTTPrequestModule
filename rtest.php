@@ -18,5 +18,5 @@ $pushPic->setURL("https://sm.ms/api/upload");
 $pushPic->setMode("POST");
 $pushPic->setPostData($data);
 $r = $pushPic->sendRequest();
-
+echo $r;
 ?>
