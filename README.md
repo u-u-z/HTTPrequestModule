@@ -1,0 +1,2 @@
+# PHPcurlPostFile
+使用PHP的curl擴展通過HTTP協議POST推送文件
