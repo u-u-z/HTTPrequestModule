@@ -35,7 +35,6 @@ class Hrm{
     */
     public function setURL($url){
         $this->_url = $url;
-        //var_dump($this->_url);
         return true;
     }
 
@@ -48,7 +47,6 @@ class Hrm{
     public function setMode($mode){
         $mode = strtoupper($mode); //轉換為大寫形式
         $this->_mode = $mode;
-        //var_dump($this->_mode);
         return true;
     }
 
@@ -61,7 +59,6 @@ class Hrm{
     public function setPostData($data){
         if(is_array($data)){
             $this->_postdata = $data;
-            //var_dump($this->_postdata);
             return true;
         }else{
             throw new Exception("[!] setPostData(): the parameter must be array! - 請傳入數組作為參數");
@@ -77,7 +74,6 @@ class Hrm{
     */
     public function sendRequest(){
         $curl = curl_init();
-        //var_dump($curl);
         curl_setopt($curl, CURLOPT_URL, $this->_url);
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, false);
@@ -92,28 +88,10 @@ class Hrm{
         }
         curl_setopt($curl, CURLOPT_TIMEOUT, 30);
         curl_setopt($curl, CURLOPT_HEADER, 0);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
         $tmpInfo = curl_exec($curl);
         curl_close($curl);
         return $tmpInfo;
     }
-
 }
-
-$data = [
-    "smfile"=>new CURLFile(realpath('w.jpg')),
-    "ssl"=> True,
-    "format"=>"json"
-];
-
-
-$pushPic = new Hrm();
-$result = $pushPic->setURL("https://sm.ms/api/upload");
-
-$result = $pushPic->setMode("POST");
-
-$result = $pushPic->setPostData($data);
-
-$result = $pushPic->sendRequest();
-echo $result;
-
 ?>

@@ -5,7 +5,7 @@
  * Please use "php -S localhost:8080" to test!
  * Miao~ Miao~ Miao~ i@linux.dog
  */
-include "hrm.php";
+require_once "hrm.php";
 
 $data = [
     "smfile"=>new CURLFile(realpath('w.jpg')),
@@ -13,14 +13,10 @@ $data = [
     "format"=>"json"
 ];
 
-
 $pushPic = new Hrm();
 $pushPic->setURL("https://sm.ms/api/upload");
 $pushPic->setMode("POST");
 $pushPic->setPostData($data);
-$pushPic->sendRequest();
-var_dump($result);
-
-
+$r = $pushPic->sendRequest();
 
 ?>
