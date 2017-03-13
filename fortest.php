@@ -21,7 +21,7 @@ function http($url, $data='', $method='GET'){
     return $tmpInfo; // 返回數據
 } 
 $data = [
-    "smfile" => new CURLFile(realpath('timg.jpg')),
+    "smfile" => new CURLFile(realpath('w.jpg')),
 	"ssl"=>True,
 	"format"=>"json",
 ];
